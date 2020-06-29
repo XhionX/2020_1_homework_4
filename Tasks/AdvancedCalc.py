@@ -46,7 +46,10 @@ Advanced calculator. Author: [Student Name], Version: 1.0.0
 37.427881707458354
 
 '''
+import re
 
+previous = 0
+run = True
 
 class MyClass:
 
@@ -57,6 +60,36 @@ class MyClass:
 
         :return:
         '''
+
+
+        def AdvCalc():
+
+            global run
+            global previous
+
+            equation = ""
+
+            if previous == 0:
+                equation = input("Введи выражение: ")
+
+            else:
+                equation = input(str(previous))
+
+            if equation == 'x':
+                print("Пока!")
+                exit(0)
+
+            else:
+                equation = re.sub('[a-zA-Z,:()" "]', "", equation)
+
+            if previous == 0:
+                previous = eval(equation)
+
+            else:
+                previous = eval(str(previous) + equation)
+
+        while run:
+            AdvCalc()
 
 
 

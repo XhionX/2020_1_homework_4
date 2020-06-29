@@ -34,6 +34,30 @@ class MyClass:
         :return:
         '''
 
+        while True:
+            print('Чтобы остановить введите stop.')
+            n = input('Введите количество флагов (от 1 до 9):\n')
+
+            if n == 'stop':
+                print('Пока!')
+                exit(0)
+
+            n = int(n)
+
+            if n > 9 or n < 1:
+                print('Ошибочка, количество флагов должно быть от 1 до 9')
+
+            elif n < 10 and n > 0:
+
+                print('+___ ' * n)
+
+                for i in range(n):
+                    print('|', i + 1, ' /', sep='', end=' ')
+
+                print()
+                print('|__\\ ' * n)
+                print('|    ' * n)
+
 
         return
 
