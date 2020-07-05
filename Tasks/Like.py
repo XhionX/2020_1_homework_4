@@ -19,11 +19,34 @@ likes("Alex", "Jacob", "Mark", "Max") -> "Alex, Jacob and 2 others like this"
 class MyClass:
 
     def likes(self, var: str) -> str:
-        result = ''
+
+        lst = []
+
+        result = 'No one like this'
+
+        if len(var) > 0:
+
+            var = var.replace(',', '')
+            lst = ' '.join(var.split())
+            lst = lst.split(" ")
+
+            if len(lst) == 1:
+                lst = " ".join(x.strip('"') for x in lst) + ' likes this'
+
+            elif len(lst) == 2:
+                lst = " and ".join(x.strip('"') for x in lst) + ' like this'
+
+            elif len(lst) == 3:
+                lst = f'{lst[0]}, {lst[1]} and {lst[2]} like this'
+                lst = lst.replace('"', '')
+
+            elif len(lst) > 3:
+                lst = f'{lst[0]}, {lst[1]} and {len(lst) - 2} others like this'
+                lst = lst.replace('"', '')
+
+            return lst
 
         return result
-
-
 
 if __name__ == '__main__':
     # Here we can make console input and check how function works
